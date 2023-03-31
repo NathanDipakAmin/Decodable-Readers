@@ -1,7 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
+import Nav from './Nav';
+import Story from './Story';
 
 function App() {
   const [getMessage, setGetMessage] = useState({})
@@ -17,14 +18,17 @@ function App() {
   }, [])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>React + Flask Tutorial</p>
-        <div>{getMessage.status === 200 ? 
+      <div className="App-nav">
+        <Nav />
+        {/* <div>{getMessage.status === 200 ? 
           <h3>{getMessage.data.message}</h3>
           :
-          <h3>Login</h3>}</div>
-      </header>
+          <h3>Login</h3>}
+      </div> */}
+      </div>
+      <div className="App-story">
+        <Story />
+      </div>
     </div>
   );
 }
