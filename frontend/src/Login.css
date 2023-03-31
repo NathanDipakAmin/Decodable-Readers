@@ -1,0 +1,46 @@
+.Login {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Nunito';
+    font-size: 20px;
+  }
+
+.Login-clogo {
+    height: 404px;
+    pointer-events: none;
+}
+
+.Login-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    column-gap: 157px;
+  }
+
+.Login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    text-align: left;
+}
+
+.Login-input {
+    width: 390px;
+    height: 53px;
+    border-color: rgba(0, 0, 0, 0.31);
+    background-color: white;
+    color: rgba(0, 0, 0, 0.31);
+}
+
+.Login-button {
+    background-color: #3DDEED;
+    color: white; 
+    margin-top: 29px;
+    width: 390px;
+    height: 53px;
+    border: none;
+    font-size: 20px;
+}
