@@ -4,11 +4,11 @@
     align-items: center;
     justify-content: center;
     font-family: 'Nunito';
-    font-size: 20px;
+    font-size: 2vh;
   }
 
 .Login-clogo {
-    height: 404px;
+    height: 31vw;
     pointer-events: none;
 }
 
@@ -17,7 +17,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    column-gap: 157px;
+    column-gap: 12vw;
   }
 
 .Login-form {
@@ -25,11 +25,11 @@
     flex-direction: column;
     align-items: left;
     text-align: left;
+    width: 30vw;
 }
 
 .Login-input {
-    width: 390px;
-    height: 53px;
+    height: 6vh;
     border-color: rgba(0, 0, 0, 0.31);
     background-color: white;
     color: rgba(0, 0, 0, 0.31);
@@ -38,9 +38,7 @@
 .Login-button {
     background-color: #3DDEED;
     color: white; 
-    margin-top: 29px;
-    width: 390px;
-    height: 53px;
+    margin-top: 3vh;
+    height: 6vh;
     border: none;
-    font-size: 20px;
 }
