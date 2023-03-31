@@ -17,7 +17,7 @@ function Nav () {
   
    return (
     <div className="Nav">
-        placeholder
+        Nav
         {/* <header className="Login-header">
                 <img src={clogo} className="Login-clogo" alt="clogo" />
                 <form onSubmit={checkPw} className="Login-form">
