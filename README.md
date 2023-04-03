@@ -8,3 +8,5 @@ Using generative AI to create simple decodable readers given a students accessib
 ![0 - Login](https://user-images.githubusercontent.com/50651018/228972259-5e5763ad-c992-4402-aa9d-070ba05c56f5.png)
 
 ![1 - Generate Story (1)](https://user-images.githubusercontent.com/50651018/228972683-4896ea19-ddbe-4dc9-a83c-b2c9e6c69f7f.png)
+
+3. Call ChatGPT's api : https://platform.openai.com/docs/api-reference/authentication
