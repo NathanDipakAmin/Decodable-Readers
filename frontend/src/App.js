@@ -7,19 +7,25 @@ import Story from './Story';
 function App() {
   const [getMessage, setGetMessage] = useState({})
 
-  useEffect(()=>{
-    axios.get('http://decodable-stories.herokuapp.com/flask/hello').then(response => {
-      console.log("SUCCESS", response)
-      setGetMessage(response)
-    }).catch(error => {
-      console.log("ERROR", error)
-    })
+  const [data, setData] = useState({level:'',topic:''})
 
-  }, [])
+  const generateStory = (story) => {
+    setData(story)
+  }
+
+  // useEffect(()=>{
+  //   axios.get('http://decodable-stories.herokuapp.com/flask/hello').then(response => {
+  //     console.log("SUCCESS", response)
+  //     setGetMessage(response)
+  //   }).catch(error => {
+  //     console.log("ERROR", error)
+  //   })
+
+  // }, [])
   return (
     <div className="App">
-        <Nav />
-        <Story />
+        <Nav generateStory={generateStory}/>
+        <Story data={data}/>
     </div>
   );
 }

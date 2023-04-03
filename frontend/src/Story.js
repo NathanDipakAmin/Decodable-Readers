@@ -1,24 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Story.css';
 
-function Story () {
-    // const [isVerified, setIsVerified] = useState(false);
-  
-    // const checkPw = () => {
-    //   // gets the current input value
-    //   const answer = document.getElementById("password").value;
-    
-    //   if (answer === "yourSecretPassword") { 
-    //     setIsVerified(true);
-    //   } else {
-    //     alert("Sorry, that's not it");
-    //   }
-    // };
+function Story ({data}) {
+    const [story, setStory] = useState('');
+
+    useEffect(() => {
+        setStory(['There was once ',data.level, ' ',data.topic])
+    },[data]);
   
    return (
     <div className="Story">
+        {data.level && data.topic != null ?
+            <div className="Story-generated">
+                <p>{story}</p>
+            </div>
+         :
         <div className="Story-placeholder">
-            <p>
+            Input a Reading Level and a Topic
+            {/* <p>
                 Once upon a time, there were three kittens named Mimi, Coco, and Toto. They lived in a cozy cottage with their owner, Mrs. Smith.
             </p>
             <p>
@@ -38,8 +37,9 @@ function Story () {
             </p>
             <p>
                 The end.
-            </p>
+            </p> */}
         </div>
+        }
         {/* <header className="Login-header">
                 <img src={clogo} className="Login-clogo" alt="clogo" />
                 <form onSubmit={checkPw} className="Login-form">
