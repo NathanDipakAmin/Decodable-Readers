@@ -1,0 +1,19 @@
+.Story {
+    text-align: left;
+    margin-top: 5vh;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    font-size: 30px;
+    width: 80vw;
+    min-height: 80vh;
+}
+
+.Story-placeholder {
+    color: rgba(0, 0, 0, 0.31);
+
+}
+
+.Story-generated {
+    color: rgba(0, 0, 0);
+
+}
