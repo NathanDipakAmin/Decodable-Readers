@@ -1,23 +1,9 @@
 .App {
-  text-align: center;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   background-color: #F5F5F5;
+  overflow: auto;
 }
-
-.App-story {
-  width: 74vw;
-  height: 100vh;
-}
-
-.App-nav {
-  background-color: white;
-  width: 26vw;
-  height: 100vh;
-  box-shadow: 4px 0 29px 7px rgba(0, 0, 0, 0.1);
-}
-
-
 
 /* .App-logo {
   height: 40vmin;

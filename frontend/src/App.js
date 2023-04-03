@@ -18,17 +18,8 @@ function App() {
   }, [])
   return (
     <div className="App">
-      <div className="App-nav">
         <Nav />
-        {/* <div>{getMessage.status === 200 ? 
-          <h3>{getMessage.data.message}</h3>
-          :
-          <h3>Login</h3>}
-      </div> */}
-      </div>
-      <div className="App-story">
         <Story />
-      </div>
     </div>
   );
 }
