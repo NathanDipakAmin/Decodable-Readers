@@ -5,13 +5,15 @@ import Nav from './Nav';
 import Story from './Story';
 
 function App() {
-  const [getMessage, setGetMessage] = useState({})
+  const [getMessage, setGetMessage] = useState({});
 
-  const [data, setData] = useState({level:'',topic:''})
+  const [isVerified, setIsVerified] = useState(false);
+
+  const [data, setData] = useState({level:'',topic:''});
 
   const generateStory = (story) => {
     setData(story)
-  }
+  };
 
   // useEffect(()=>{
   //   axios.get('http://decodable-stories.herokuapp.com/flask/hello').then(response => {
@@ -24,8 +26,8 @@ function App() {
   // }, [])
   return (
     <div className="App">
-        <Nav generateStory={generateStory}/>
-        <Story data={data}/>
+        <Nav generateStory={generateStory} isVerified={isVerified} setIsVerified={setIsVerified}/>
+        <Story data={data} isVerified={isVerified} setIsVerified={setIsVerified}/>
     </div>
   );
 }

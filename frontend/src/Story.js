@@ -1,12 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import './Story.css';
+import { Configuration, OpenAIApi } from "openai";
 
-function Story ({data}) {
+const configuration = new Configuration({
+    organization: "org-GhDfDedBY2tVsrfpCOUUxeVI",
+    apiKey: process.env.OPENAI_API_KEY,
+});
+const openai = new OpenAIApi(configuration);
+
+function Story ({data, isVerified, setIsVerified}) {
     const [story, setStory] = useState('');
 
     useEffect(() => {
-        setStory(['There was once ',data.level, ' ',data.topic])
-    },[data]);
+        async function requestChatGPT() {
+            if (isVerified === true){
+                const response = await openai.createCompletion({
+                    model: "text-davinci-003",
+                    prompt: "Tell me a 10 sentence phonics level "+ data.level +" story suitable for children about a " + data.topic,
+                    temperature: 0,
+                    max_tokens: 500,
+                    top_p: 1.0,
+                    frequency_penalty: 0.0,
+                    presence_penalty: 0.0,
+                });
+                setStory(response.data.choices[0].text);
+                setIsVerified(false);
+            };
+        }
+        requestChatGPT();
+    },[isVerified]);
   
    return (
     <div className="Story">

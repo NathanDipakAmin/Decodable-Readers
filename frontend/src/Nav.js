@@ -2,20 +2,26 @@
 import './Nav.css';
 import clogo from './clogo.svg';
 
-function Nav ({generateStory}) {
+function Nav ({generateStory, isVerified, setIsVerified}) {
     // const [isVerified, setIsVerified] = useState(false);
   
     const genStory = (e) => {
       // gets the current input value
       e.preventDefault();
 
-      const level = document.getElementById("level").value;
+      if (isVerified === false) {
+        const level = document.getElementById("level").value;
 
-      const topic = document.getElementById("topic").value;
+        const topic = document.getElementById("topic").value;
 
-      const data = {level: level, topic: topic};
+        const data = {level: level, topic: topic};
 
-      generateStory(data);
+        generateStory(data);
+
+        setIsVerified(true);
+      }
+
+      
     
     //   if (level & topic !== null) {
     //     generateStory(data)
