@@ -4,8 +4,10 @@ import { Configuration, OpenAIApi } from "openai";
 
 const configuration = new Configuration({
     organization: "org-GhDfDedBY2tVsrfpCOUUxeVI",
-    apiKey: process.env.OPENAI_API_KEY,
+    apiKey: process.env.REACT_APP_OPENAI_API_KEY,
 });
+
+
 const openai = new OpenAIApi(configuration);
 
 function Story ({data, isVerified, setIsVerified}) {
@@ -13,10 +15,12 @@ function Story ({data, isVerified, setIsVerified}) {
 
     useEffect(() => {
         async function requestChatGPT() {
+            console.log("API key : ", process.env.OPENAI_API_KEY)
+
             if (isVerified === true){
                 const response = await openai.createCompletion({
                     model: "text-davinci-003",
-                    prompt: "Tell me a 10 sentence phonics level "+ data.level +" story suitable for children about a " + data.topic,
+                    prompt: "Tell me a 10 sentence phonics level " + data.level +" story suitable for children about a " + data.topic,
                     temperature: 0,
                     max_tokens: 500,
                     top_p: 1.0,
