@@ -14,7 +14,6 @@ function Story ({data, isVerified, setIsVerified}) {
     useEffect(() => {
         async function requestChatGPT() {
             if (isVerified === true){
-                alert("is calling chat GPT - updated key");
                 const response = await openai.createCompletion({
                     model: "text-davinci-003",
                     prompt: "Tell me a 10 sentence phonics level "+ data.level +" story suitable for children about a " + data.topic,
@@ -24,7 +23,6 @@ function Story ({data, isVerified, setIsVerified}) {
                     frequency_penalty: 0.0,
                     presence_penalty: 0.0,
                 });
-                alert("completed call to ChatGPT");
                 setStory(response.data.choices[0].text);
                 setIsVerified(false);
             };
