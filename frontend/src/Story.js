@@ -4,7 +4,7 @@ import { Configuration, OpenAIApi } from "openai";
 
 const configuration = new Configuration({
     organization: "org-GhDfDedBY2tVsrfpCOUUxeVI",
-    apiKey: process.env.REACT_APP_KEY,
+    apiKey: "sk-"+process.env.REACT_APP_OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
 
@@ -14,7 +14,7 @@ function Story ({data, isVerified, setIsVerified}) {
     useEffect(() => {
         async function requestChatGPT() {
             if (isVerified === true){
-                alert("is calling chat GPT with updated key");
+                alert("is calling chat GPT");
                 const response = await openai.createCompletion({
                     model: "text-davinci-003",
                     prompt: "Tell me a 10 sentence phonics level "+ data.level +" story suitable for children about a " + data.topic,
