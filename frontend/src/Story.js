@@ -14,7 +14,7 @@ function Story ({data, isVerified, setIsVerified}) {
     useEffect(() => {
         async function requestChatGPT() {
             if (isVerified === true){
-                console.log("REACT_APP_KEY " +process.env.REACT_APP_KEY);
+                console.log("Process.env : " +process.env);
                 const response = await openai.createCompletion({
                     model: "text-davinci-003",
                     prompt: "Tell me a 10 sentence phonics level "+ data.level +" story suitable for children about a " + data.topic,
