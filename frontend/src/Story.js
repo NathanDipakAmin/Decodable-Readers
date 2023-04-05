@@ -4,7 +4,7 @@ import { Configuration, OpenAIApi } from "openai";
 
 const configuration = new Configuration({
     organization: "org-GhDfDedBY2tVsrfpCOUUxeVI",
-    apiKey: process.env.REACT_APP_KEY,
+    apiKey: process.env.REACT_APP_OPENAI_KEY,
 });
 const openai = new OpenAIApi(configuration);
 
@@ -14,6 +14,7 @@ function Story ({data, isVerified, setIsVerified}) {
     useEffect(() => {
         async function requestChatGPT() {
             if (isVerified === true){
+                console.log("process.env.REACT_APP_OPENAI_KEY : ", process.env.REACT_APP_OPENAI_KEY)
                 console.log("Process.env JSON : " + JSON.stringify(process.env));
                 const response = await openai.createCompletion({
                     model: "text-davinci-003",
