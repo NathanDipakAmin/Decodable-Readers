@@ -51,7 +51,7 @@ function Story ({data, isVerified, setIsVerified}) {
                 /> : <></>
 
                 }
-                <div className='Story-content'>{story}</div>
+                <p className='Story-content'>{story}</p>
             </div>
 
          :

@@ -32,7 +32,7 @@ def chat_api():
 
 
     messages = [
-        {"role": "system", "content": "You are an author tasked with writing decodable stories for children at their specific phonics reading levels. The user will input a phonics level and a topic. Write a 10 sentence story given that information."+ "Write a children's story at a phonics level of "+level+" about "+ topic+" . Ensure there is proper punctuation and line breaks between paragraphs."},
+        {"role": "system", "content": "You are an author tasked with writing decodable stories for children at their specific phonics reading levels. The user will input a phonics level and a topic. Write a 10 sentence story given that information."+ "Write a children's story at a phonics level of "+level+" about "+ topic},
     ]
 
     response = openai.ChatCompletion.create(
