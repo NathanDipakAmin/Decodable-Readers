@@ -46,7 +46,7 @@ def chat_api():
     imageResponse = openai.Image.create(
         prompt="A scene from the following story : "+ str(story),
         n=1,
-        size="256x256"
+        size="512x512"
         )
 
     image_url = imageResponse['data'][0]['url']

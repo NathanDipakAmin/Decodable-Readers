@@ -43,7 +43,6 @@ function Story ({data, isVerified, setIsVerified}) {
     <div className="Story">
         {data.level && data.topic != null ?
             <div className="Story-generated">
-                <p>{story}</p>
                 {imageURL !== '' ?
                 <img 
                 src={imageURL}
@@ -51,6 +50,7 @@ function Story ({data, isVerified, setIsVerified}) {
                 /> : <></>
 
                 }
+                <p>{story}</p>
             </div>
 
          :
