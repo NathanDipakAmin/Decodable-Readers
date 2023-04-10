@@ -44,7 +44,7 @@ def chat_api():
     story = response['choices'][0]['message']['content']
 
     imageResponse = openai.Image.create(
-        prompt="a colorful book cover for the following story : "+ str(story),
+        prompt="a scene (without any text) for the following story : "+ str(story),
         n=1,
         size="512x512"
         )
