@@ -29,10 +29,8 @@ def chat_api():
     level = request_json['level']
     topic = request_json['topic']
 
-
-
     messages = [
-        {"role": "system", "content": "You are an author tasked with writing decodable stories for children at their specific phonics reading levels. The user will input a phonics level and a topic. Write a 10 sentence story given that information."+ "Write a children's story at a phonics level of "+level+" about "+ topic},
+        {"role": "system", "content": "You are an author tasked with writing decodable stories for children at their specific phonics reading levels. The user will input a phonics level and a topic. Write a 5 sentence story given that information."+ "Write a children's story at a phonics level of "+level+" about "+ topic},
     ]
 
     response = openai.ChatCompletion.create(
@@ -40,7 +38,7 @@ def chat_api():
         messages=messages
     )
 
-    story = response['choices'][0]['message']['content']
+    story = response['choices'][0]['message']['content'][:700]
 
     imageResponse = openai.Image.create(
         prompt="a scene (without any text) for the following story : "+ str(story),
