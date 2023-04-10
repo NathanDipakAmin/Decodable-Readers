@@ -14,7 +14,7 @@ function Story ({data, isVerified, setIsVerified}) {
 
                 const jsonData = { level: data.level, topic: data.topic };
 
-                axios.post('https://decodable-stories.herokuapp.com/chat_api/', jsonData, { withCredentials: true }).then(response => {
+                axios.post('https://decodable-stories.herokuapp.com/chat_api', jsonData, { withCredentials: true }).then(response => {
                     console.log("SUCCESS", response.data[0])
                     setIsLoading(false);
                     setStory(response.data[0]);

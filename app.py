@@ -22,7 +22,7 @@ def serve(path):
     return send_from_directory(app.static_folder,'index.html')
 
 
-@app.route('/chat_api/', methods=['POST'])
+@app.route('/chat_api', methods=['POST'])
 def chat_api():
     # Read from body of post request
     request_json = request.get_json()
