@@ -47,6 +47,7 @@ function Story ({data, isVerified, setIsVerified}) {
                 <img 
                 src={imageURL}
                 alt="new"
+                className='Story-image'
                 /> : <></>
 
                 }
