@@ -9,7 +9,7 @@ function Story ({data, isVerified, setIsVerified}) {
         async function requestChatGPT() {
             if (isVerified === true){
 
-                axios.post('http://decodable-stories.herokuapp.com/chat_api', { withCredentials: true }).then(response => {
+                axios.post('https://decodable-stories.herokuapp.com/chat_api', { withCredentials: true }).then(response => {
                     console.log("SUCCESS", response.data)
                     setStory(response.data);
                     }).catch(error => {
