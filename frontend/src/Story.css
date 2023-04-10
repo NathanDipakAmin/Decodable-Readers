@@ -6,6 +6,9 @@
     font-size: 30px;
     width: 80vw;
     min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .Story-placeholder {
@@ -34,7 +37,7 @@
     margin: auto;
     border: 20px solid #EAF0F6;
     border-radius: 50%;
-    border-top: 20px solid #FF7A59;
+    border-top: 20px solid #3DDEED;
     width: 200px;
     height: 200px;
     animation: spinner 4s linear infinite;
