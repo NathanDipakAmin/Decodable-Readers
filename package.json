@@ -1,8 +1,5 @@
 {
   "dependencies": {
     "openai": "^3.2.1"
-  },
-  "scripts": {
-    "heroku-postbuild": "cd frontend && npm install && npm run build"
   }
 }
