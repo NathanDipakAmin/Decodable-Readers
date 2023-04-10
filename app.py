@@ -25,12 +25,15 @@ def serve(path):
 @app.route('/chat_api', methods=['POST'])
 def chat_api():
     # Read from body of post request
-    # request_json = request.get_json()
-    # user_chat = request_json['user_input']
+    request_json = request.get_json()
+    level = request_json['level']
+    topic = request_json['topic']
+
+
 
     messages = [
-        {"role": "system", "content": "You are an author tasked with writing decodable stories for children at their specific phonics reading levels. The user will input a phonics level and a topic. Write a story given that information."},
-        {"role": "user", "content": "Write a children's story at a phonics level 55 about magical cats"},
+        {"role": "system", "content": "You are an author tasked with writing decodable stories for children at their specific phonics reading levels. The user will input a phonics level and a topic. Write a 10 sentence story given that information."},
+        {"role": "user", "content": "Write a children's story at a phonics level of {level} about {topic}"},
     ]
 
     response = openai.ChatCompletion.create(
