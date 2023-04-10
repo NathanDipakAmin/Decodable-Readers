@@ -17,5 +17,8 @@
     color: rgba(0, 0, 0);
     display: flex;
     direction: row;
+}
 
+.Story-content {
+    margin-left: 50px;
 }
