@@ -4,6 +4,7 @@ import axios from 'axios';
 
 function Story ({data, isVerified, setIsVerified}) {
     const [story, setStory] = useState('');
+    const [imageURL,setImageURL] = useState('')
 
     useEffect(() => {
         async function requestChatGPT() {
@@ -12,8 +13,9 @@ function Story ({data, isVerified, setIsVerified}) {
                 const jsonData = { level: data.level, topic: data.topic };
 
                 axios.post('https://decodable-stories.herokuapp.com/chat_api', jsonData, { withCredentials: true }).then(response => {
-                    console.log("SUCCESS", response.data)
-                    setStory(response.data);
+                    console.log("SUCCESS", response.data[0])
+                    setStory(response.data[0]);
+                    setImageURL(response.data[1])
                     }).catch(error => {
                     console.log(error)
                 });
@@ -42,7 +44,15 @@ function Story ({data, isVerified, setIsVerified}) {
         {data.level && data.topic != null ?
             <div className="Story-generated">
                 <p>{story}</p>
+                {imageURL !== '' ?
+                <img 
+                src={imageURL}
+                alt="new"
+                /> : <></>
+
+                }
             </div>
+
          :
         <div className="Story-placeholder">
             Input a Reading Level and a Topic

@@ -41,6 +41,17 @@ def chat_api():
         messages=messages
     )
 
-    return response['choices'][0]['message']['content']
+    story = response['choices'][0]['message']['content']
+
+    imageResponse = openai.Image.create(
+        prompt="a white siamese cat",
+        n=1,
+        size="1024x1024"
+        )
+
+    image_url = imageResponse['data'][0]['url']
+
+
+    return [story, image_url]
 
 api.add_resource(HelloApiHandler, '/flask/hello')
