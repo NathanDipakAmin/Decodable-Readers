@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Story.css';
-import { Configuration, OpenAIApi } from "openai";
-
-const configuration = new Configuration({
-    organization: "org-GhDfDedBY2tVsrfpCOUUxeVI",
-    apiKey: process.env.REACT_APP_OPENAI_KEY,
-});
-const openai = new OpenAIApi(configuration);
+import axios from 'axios';
 
 function Story ({data, isVerified, setIsVerified}) {
     const [story, setStory] = useState('');
@@ -14,19 +8,27 @@ function Story ({data, isVerified, setIsVerified}) {
     useEffect(() => {
         async function requestChatGPT() {
             if (isVerified === true){
-                console.log("process.env.REACT_APP_KEY_TEST : ", process.env.REACT_APP_KEY_TEST);
-                console.log("process.env.REACT_APP_OPENAI_KEY : ", process.env.REACT_APP_OPENAI_KEY);
-                console.log("Process.env JSON : " + JSON.stringify(process.env));
-                const response = await openai.createCompletion({
-                    model: "text-davinci-003",
-                    prompt: "Tell me a 10 sentence phonics level "+ data.level +" story suitable for children about a " + data.topic,
-                    temperature: 0,
-                    max_tokens: 500,
-                    top_p: 1.0,
-                    frequency_penalty: 0.0,
-                    presence_penalty: 0.0,
+
+                axios.post('http://decodable-stories.herokuapp.com/chat_api', { withCredentials: true }).then(response => {
+                    console.log("SUCCESS", response.data)
+                    setStory(response.data);
+                    }).catch(error => {
+                    console.log(error)
                 });
-                setStory(response.data.choices[0].text);
+
+                // console.log("process.env.REACT_APP_KEY_TEST : ", process.env.REACT_APP_KEY_TEST);
+                // console.log("process.env.REACT_APP_OPENAI_KEY : ", process.env.REACT_APP_OPENAI_KEY);
+                // console.log("Process.env JSON : " + JSON.stringify(process.env));
+                // const response = await openai.createCompletion({
+                //     model: "text-davinci-003",
+                //     prompt: "Tell me a 10 sentence phonics level "+ data.level +" story suitable for children about a " + data.topic,
+                //     temperature: 0,
+                //     max_tokens: 500,
+                //     top_p: 1.0,
+                //     frequency_penalty: 0.0,
+                //     presence_penalty: 0.0,
+                // });
+                
                 setIsVerified(false);
             };
         }

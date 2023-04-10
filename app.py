@@ -1,7 +1,17 @@
-from flask import Flask, send_from_directory
+from flask import Flask, render_template, session, send_from_directory, request
 from flask_restful import Api, Resource, reqparse
 # from flask_cors import CORS #comment this on deployment
 from api.HelloApiHandler import HelloApiHandler
+
+import openai
+import json
+import os
+import re
+
+DEBUG = os.environ.get('DEBUG', False)
+
+openai.organization = "org-GhDfDedBY2tVsrfpCOUUxeVI"
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 app = Flask(__name__, static_url_path='', static_folder='frontend/build')
 # CORS(app) #comment this on deployment
@@ -10,5 +20,24 @@ api = Api(app)
 @app.route("/", defaults={'path':''})
 def serve(path):
     return send_from_directory(app.static_folder,'index.html')
+
+
+@app.route('/chat_api', methods=['POST'])
+def chat_api():
+    # Read from body of post request
+    # request_json = request.get_json()
+    # user_chat = request_json['user_input']
+
+    messages = [
+        {"role": "system", "content": "You are an author tasked with writing decodable stories for children at their specific phonics reading levels. The user will input a phonics level and a topic. Write a story given that information."},
+        {"role": "user", "content": "Write a children's story at a phonics level 55 about magical cats"},
+    ]
+
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=messages
+    )
+
+    return response['choices'][0]['message']['content']
 
 api.add_resource(HelloApiHandler, '/flask/hello')
