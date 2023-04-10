@@ -38,10 +38,10 @@ def chat_api():
         messages=messages
     )
 
-    story = response['choices'][0]['message']['content'][:500]
+    story = response['choices'][0]['message']['content']
 
     imageResponse = openai.Image.create(
-        prompt="a scene that does not contain text for the following story : "+ str(story),
+        prompt="a scene that does not contain text for the following story : "+ str(story[:500]),
         n=1,
         size="512x512"
         )
