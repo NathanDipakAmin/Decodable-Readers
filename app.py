@@ -2,6 +2,7 @@ from flask import Flask, render_template, session, send_from_directory, request
 from flask_restful import Api, Resource, reqparse
 # from flask_cors import CORS #comment this on deployment
 from api.HelloApiHandler import HelloApiHandler
+from Graphemes.GenGraphemes import GenGraphemes
 
 import openai
 import json
@@ -29,8 +30,15 @@ def chat_api():
     level = request_json['level']
     topic = request_json['topic']
 
+    Grapheme = GenGraphemes(level)
+
+    graphemeList = Grapheme.run()
+
+    # print(graphemeList)
+
+
     messages = [
-        {"role": "system", "content": "You are an author tasked with writing decodable stories for children at their specific phonics reading levels. The user will input a phonics level and a topic. Write a 5 sentence story given that information."+ "Write a children's story at a phonics level of "+level+" about "+ topic + " Include new lines and paragraphs so react div can parse."},
+        {"role": "system", "content": "You are an author tasked with writing decodable stories for children at their specific phonics reading levels. The user will input a phonics level and a topic. Write a 5 sentence story given that information."+ "Write a children's story at a phonics level of "+level+" about "+ topic + " The only nouns, verbs, adjectives and adverbs you can use are from the following list:"+ str(graphemeList)},
     ]
 
     response = openai.ChatCompletion.create(
