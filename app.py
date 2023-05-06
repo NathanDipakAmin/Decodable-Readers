@@ -34,8 +34,6 @@ def chat_api():
 
     graphemeList = Grapheme.run()
 
-    # print(graphemeList)
-
 
     messages = [
         {"role": "system", "content": "You are an author tasked with writing decodable stories for children at their specific phonics reading levels. The user will input a phonics level and a topic. Write a 5 sentence story given that information."+ "Write a children's story at a phonics level of "+level+" about "+ topic + " The only nouns, verbs, adjectives and adverbs you can use are from the following list:"+ str(graphemeList)},
