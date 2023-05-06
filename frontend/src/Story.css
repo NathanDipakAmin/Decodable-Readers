@@ -6,9 +6,6 @@
     font-size: 30px;
     width: 80vw;
     min-height: 80vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .Story-placeholder {
@@ -18,32 +15,5 @@
 
 .Story-generated {
     color: rgba(0, 0, 0);
-    display: flex;
-    direction: row;
-}
 
-.Story-content {
-    margin-left: 50px;
-    font-family: Georgia;
-    font-size: 20pt;
 }
-
-.Story-image {
-    width: 512px;
-    height: 512px;
-}
-
-.Story-loader {
-    margin: auto;
-    border: 20px solid #EAF0F6;
-    border-radius: 50%;
-    border-top: 20px solid #3DDEED;
-    width: 200px;
-    height: 200px;
-    animation: spinner 4s linear infinite;
-  }
-  
-  @keyframes spinner {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }

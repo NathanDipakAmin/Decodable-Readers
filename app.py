@@ -1,18 +1,7 @@
-from flask import Flask, render_template, session, send_from_directory, request
+from flask import Flask, send_from_directory
 from flask_restful import Api, Resource, reqparse
 # from flask_cors import CORS #comment this on deployment
 from api.HelloApiHandler import HelloApiHandler
-from Graphemes.GenGraphemes import GenGraphemes
-
-import openai
-import json
-import os
-import re
-
-DEBUG = os.environ.get('DEBUG', False)
-
-openai.organization = "org-GhDfDedBY2tVsrfpCOUUxeVI"
-openai.api_key = os.getenv("OPENAI_API_KEY")
 
 app = Flask(__name__, static_url_path='', static_folder='frontend/build')
 # CORS(app) #comment this on deployment
@@ -21,7 +10,6 @@ api = Api(app)
 @app.route("/", defaults={'path':''})
 def serve(path):
     return send_from_directory(app.static_folder,'index.html')
-
 
 @app.route('/chat_api', methods=['POST'])
 def chat_api():
